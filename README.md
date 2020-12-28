@@ -1,70 +1,86 @@
-# Getting Started with Create React App
+A progressive web app with the ability to work offline and a serverless backend developed using a TDD technique.
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Users of this app will be able to use it whenever they want to view upcoming
+events for a specific city.
 
-## Available Scripts
+It can be used even when the user is offline. As it’s responsive, it displays
+well on any device.
 
-In the project directory, you can run:
+KEY FEATURES:
 
-### `npm start`
+1. Filter events by city.
+2. Show/hide event details.
+3. Specify number of events.
+4. Use the app when offline.
+5. Add an app shortcut to the home screen.
+6. View a chart showing the number of upcoming events by city.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+USER STORIES:
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+1. Show/hide event details
+   As a user
+   I should be able to show and hide details of a specific event by click on it
+   So that I can get more information about that event
 
-### `npm test`
+2. Specify number of events   As a user
+   I should be able to see the number of events
+   So that I can see how many events are taking place in a specific city during a specific time period
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+3.Use the app when offline
+As a user
+I should be able to use the app when offline
+So that I can see what events are taking place without an internet connect or data.
 
-### `npm run build`
+4. View a chart showing the number of upcoming events by city
+   As a user
+   I should be able to view a chart showing the numbers of upcoming events by city
+   So that I can compare the number of events with other cities.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+SCENARIOS:
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+Feature 2: Show/hide an events details
+Scenario 1: An event element is collapsed by default
+Given the user hasn’t clicked on any event
+When the user is at the home page  Then the user should see a list of x amount of events
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+Scenario 2: User can expand an event to see its details
+Given the user is at the home page with the list of events
+When the user clicks on an event
+Then the user should see an event element with details about the event
 
-### `npm run eject`
+Scenario 3: User can collapse an event to hide its details
+Given the event details element is prompted
+When the user clicks on the X button
+Then the user should see the home page with the list of events
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+Feature 3: Specify number of events
+Scenario 1: When user hasn’t specified a number, 32 is the default number
+Given the user hasn’t modified the number of events on the home page
+When the user views the home page
+Then the user will see 32 events on the home page
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+Scenario 2: User can change the number of events they want to see
+Given the home page is open
+When the user modifies the number of events displayed on the home page
+Then the number of events on the home page will change to the number the user has
+modified it too.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+Feature 4: Use the app when offline
+Scenario 1: Show cached data when theres no internet connection
+Given the user is not connected to the internet
+When the user opens the app
+Then the user should see a list of events that was cached last time the user was
+connected to the internet while the app was open
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+Scenario 2: Show error when user changes the settings (city, time range)
+Given the user is not connected to the internet and is at the home page
+When a user changes cities or the time range
+Then the user will see a prompt with an error saying that an internet connection is
+required for these functions to work
 
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+Feature 5: Data visualization  
+Scenario 1: Show a chart with the number of upcoming events in each city
+Given the home page is open
+When the user views a new city
+Then the user will see a chart with the number of upcoming events happening in that
+city.
