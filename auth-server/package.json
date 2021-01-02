@@ -1,6 +1,7 @@
 {
   "name": "auth-server",
   "version": "1.0.0",
+  "description": "",
   "main": "handler.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -9,7 +10,5 @@
   "license": "ISC",
   "dependencies": {
     "googleapis": "^59.0.0"
-  },
-  "devDependencies": {},
-  "description": ""
+  }
 }
