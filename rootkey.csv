@@ -1,4 +1,6 @@
-AWSAccessKeyId=AKIAI5ZXGMGNNDWW7C3A
-AWSSecretKey=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
 
-serverless config credentials --provider aws --key AKIAI5ZXGMGNNDWW7C3A --secret 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
+
+Access Key ID: AKIAISWDSP6NPOTSGBTA
+Secret Access Key: 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
+
+serverless config credentials --provider aws --key AKIAISWDSP6NPOTSGBTA --secret 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
