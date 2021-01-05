@@ -11,7 +11,7 @@
 # production
 /build
 
-/rootkey.csv
+rootkey.csv
 
 # misc
 .DS_Store
