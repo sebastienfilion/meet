@@ -29,16 +29,16 @@ module.exports.getAuthURL = async () => {
     access_type: "offline",
     scope: SCOPES,
   });
-
-  return {
-    statusCode: 200,
-    headers: {
-      "Access-Control-Allow-Origin": "*",
-    },
-    body: JSON.stringify({
-      authUrl: authUrl,
-    }),
-  };
+    
+    return {
+      statusCode: 200,
+      headers: {
+        "Access-Control-Allow-Origin": "*",
+      },
+      body: JSON.stringify({
+        authUrl: authUrl,
+      }),
+    };
 };
 
 module.exports.getAccessToken = async (event) => {
