@@ -25,20 +25,31 @@ const oAuth2Client = new google.auth.OAuth2(
 
 module.exports.getAuthURL = async () => {
  
-  const authUrl = oAuth2Client.generateAuthUrl({
-    access_type: "offline",
-    scope: SCOPES,
-  });
-    
-    return {
-      statusCode: 200,
-      headers: {
-        "Access-Control-Allow-Origin": "*",
-      },
-      body: JSON.stringify({
-        authUrl: authUrl,
-      }),
-    };
+  try {
+    const authUrl = oAuth2Client.generateAuthUrl({
+      access_type: "offline",
+      scope: SCOPES,
+    });
+      
+      return {
+        statusCode: 200,
+        headers: {
+          "Access-Control-Allow-Origin": "*",
+        },
+        body: JSON.stringify({
+          authUrl: authUrl,
+        })
+        }
+
+  } catch (error) {
+      return {
+        statusCode: 500,
+        headers: {
+          "Access-Control-Allow-Origin": "*"
+        },
+        body: error.message
+      };
+    }
 };
 
 module.exports.getAccessToken = async (event) => {
