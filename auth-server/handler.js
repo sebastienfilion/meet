@@ -35,32 +35,21 @@ module.exports.ping = async () => {
 };
 
 module.exports.getAuthURL = async () => {
- 
-  try {
-    const authUrl = oAuth2Client.generateAuthUrl({
-      access_type: "offline",
-      scope: SCOPES,
-    });
-      
-      return {
-        statusCode: 200,
-        headers: {
-          "Access-Control-Allow-Origin": "*",
-        },
-        body: JSON.stringify({
-          authUrl: authUrl,
-        })
-        }
 
-  } catch (error) {
-      return {
-        statusCode: 500,
-        headers: {
-          "Access-Control-Allow-Origin": "*"
-        },
-        body: error.message
-      };
-    }
+  const authUrl = oAuth2Client.generateAuthUrl({
+    access_type: "offline",
+    scope: SCOPES,
+  });
+
+  return {
+    statusCode: 200,
+    headers: {
+      "Access-Control-Allow-Origin": "*",
+    },
+    body: JSON.stringify({
+      authUrl: authUrl,
+    }),
+  };
 };
 
 module.exports.getAccessToken = async (event) => {
